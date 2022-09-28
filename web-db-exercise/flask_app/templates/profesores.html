@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+{% block titulo %}Profesores{% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Profesores</h3>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Ciudad</th>
+                        <th>Direccion</th>
+                        <th>Salario</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professor in professors %}
+                    <tr>
+                       
+                        <td>{{professor.first_name}}</td>
+                        <td>{{professor.last_name}}</td>
+                        <td>{{professor.city}}</td>
+                        <td>{{professor.address}}</td>
+                        <td>{{professor.salary}}</td>
+                      
+                        
+                        <td>
+                            <form action="{{url_for('eliminar_profesor')}}" method="POST">
+                                <input type="hidden" name="id" value="{{professor.id}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
