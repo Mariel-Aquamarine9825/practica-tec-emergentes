@@ -1,0 +1,25 @@
+services:
+  db:
+    # image: python:3.7
+    hostname: "dbcontainer"
+    build:
+      context: .
+      dockerfile: Dockerfile_db
+    ports: 
+    - 8306:3306
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile_web
+    ports:
+    - 8000:80
+    volumes:
+    - ./php_app:/var/www/html
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile_flask
+    ports:
+    - 9000:81
+    volumes:
+    - ./flask_app:/opt/app

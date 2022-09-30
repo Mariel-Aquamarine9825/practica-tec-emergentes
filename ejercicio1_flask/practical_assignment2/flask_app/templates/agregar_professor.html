@@ -1,0 +1,29 @@
+{% extends "home.html" %}
+{% block titulo %}
+Agregar juego
+{% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Agregar profesor</h3>
+        
+            <form action="{{url_for('guardar_professor')}}" method="post">
+                <label for="first_name">Nombre:</label>
+                <input required type="text" class="input" placeholder="Nombre" name="first_name" id="first_name">
+                <label for="last_name">Apellido:</label>
+                <input required type="text" class="input" placeholder="Apellido" name="last_name" id="last_name">
+                <label for="city">Ciudad:</label>
+                <input required type="text" class="input" placeholder="Ciudad" name="city" id="city">
+                <label for="address">Direccion:</label>
+                <input required type="text" class="input" placeholder="Direccion" name="address" id="address">
+                <label for="salary">Salario:</label>
+                <input required type="number" class="input" placeholder="Salario" name="salary" id="salary">
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('professor_list')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
